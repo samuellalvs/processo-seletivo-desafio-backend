@@ -1,0 +1,25 @@
+:root {
+    --background: #F0F2F5;
+    --green: #45DEA8;
+    --gray: #2F3D4A;
+    --white: #FFFFFF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--background);
+}
+
+body, input, button {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+}
+
+.container {
+    padding: 0 10rem;
+}
