@@ -1,0 +1,54 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    padding: 5rem 0;
+}
+
+.header {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+
+}
+
+.content{
+    padding: 5rem 0;
+}
+
+.transfer-form{
+    display: flex;
+    flex-direction: column;
+}
+
+.input-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    margin: 1rem 0;
+    padding: 1rem 0;
+}
+
+.input-wrapper label {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--gray);
+}
+
+.input-wrapper input {
+    color: var(--gray);
+    font-size: 1.5rem;
+
+    padding: 0.5rem 0;
+
+    border: 0;
+    border-bottom: 1px solid var(--gray);
+
+    transition: border-bottom-color 0.2s;
+    
+}
+
+.input-wrapper input:focus {
+    outline: none;
+    border-bottom-color: var(--green);
+}
