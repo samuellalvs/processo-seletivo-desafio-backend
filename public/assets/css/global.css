@@ -1,14 +1,20 @@
 :root {
     --background: #F0F2F5;
     --green: #45DEA8;
+    --dark-green: #226f54;
     --gray: #2F3D4A;
     --white: #FFFFFF;
+
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+html, body, .root {
+    height: 100%;
 }
 
 body {
@@ -20,6 +26,6 @@ body, input, button {
     font-weight: 400;
 }
 
-.container {
-    padding: 0 10rem;
+.root {
+    padding: 0 20rem;
 }

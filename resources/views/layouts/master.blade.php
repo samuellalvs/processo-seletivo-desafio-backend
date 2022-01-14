@@ -9,16 +9,17 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" type="image/jpg" href={{asset('favicon.ico')}} />
 
     <link rel="stylesheet" href={{asset('/assets/css/global.css')}}>
 
-    <title>@yield('title')</title>
+    <title>@yield('title') - Desafio PicPay</title>
 
-    @section('styles')
+    @yield('styles')
 </head>
 
 <body>
-    <div class="container">
+    <div class="root">
 
         @yield('content')
 
