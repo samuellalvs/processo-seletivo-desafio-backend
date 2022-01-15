@@ -18,13 +18,11 @@ use App\Http\Controllers\UserController;
 
 Route::middleware('auth:sanctum')->group(function(){
     Route::post('/user/signOut', [UserController::class, 'signOut']);
+    Route::post('/transfer', [TransferController::class, 'doTransfer']);
 });
 
-Route::post('/transfer', [TransferController::class, 'doTransfer']);
-
-Route::post('/user/signIn', [UserController::class, 'signIn']);
-
 Route::prefix('/user')->group(function(){
+    Route::post('/signIn', [UserController::class, 'signIn']);
     Route::post('/create', [UserController::class, 'createUser']);
 });
 
