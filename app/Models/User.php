@@ -28,4 +28,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function bank_balance(){
+        return $this->hasOne(BankBalance::class, 'user_id', 'id');
+    }
 }

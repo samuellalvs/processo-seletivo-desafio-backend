@@ -15,7 +15,7 @@ class CreateBankBalances extends Migration
     {
         Schema::create('bank_balances', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->unique();
             $table->foreign('user_id')->references('id')->on('user');
             $table->float('amount');
             $table->timestamps();

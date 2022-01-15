@@ -10,11 +10,11 @@ use App\Models\User;
 
 class UserController extends Controller
 {
-    public function createUser(){
+    public function createUser(Request $request){
         $validated = $request->validate([
             'name' => 'string|required',
             'email' => 'string|required|unique:users',
-            'cpf' => 'string|required|unique:users',
+            'registryNumber' => 'string|required|unique:users',
             'type' => 'string|required',
             'password' => 'string|required'
         ]);
@@ -23,6 +23,8 @@ class UserController extends Controller
             $user = new User;
             $user->name = $request->name;
             $user->email = $request->email;
+            $user->registryNumber = $request->registryNumber;
+            $user->type = $request->type;
             $user->password = Hash::make($request->password);
             
             if($user->save()){
@@ -48,7 +50,9 @@ class UserController extends Controller
         ];
 
         if(auth()->attempt($credentials)){
-            $user_token = auth()->user()->createToken('@picpay:token')->accessToken;
+            $user_token = auth()->user()->createToken('@picpay:token')->plainTextToken;
+
+            auth()->user()->bank_balance;
 
             return response()->json([
                 'data' => 'success',
@@ -62,8 +66,8 @@ class UserController extends Controller
         }
     }
 
-    public function signOut(){
-        $request->user()->token()->revoke();
+    public function signOut(Request $request){
+        $request->user()->currentAccessToken()->delete();
 
         return response()->json([
             'data' => 'success'
