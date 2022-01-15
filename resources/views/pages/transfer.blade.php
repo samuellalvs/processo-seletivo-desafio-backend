@@ -10,14 +10,15 @@
 
 <div class="container">
     <div class="header">
-        <button>
+        <button onCLick="handleBack()">
             Voltar
         </button>
         <h1>Nova transferência</h1>
     </div>
 
     <div class="content">
-        <form class="transfer-form" action="">
+        <form class="transfer-form" onSubmit="(e) => { e.preventDefault(); }">
+            @csrf
 
             <div class="input-wrapper">
                 <label for="registryNumber">CPF/CNPJ</label>
@@ -34,6 +35,7 @@
                 <input type="amount" id="amount">
             </div>
 
+            <button type="submit">Confirmar transferência</button>
         </form>
 
     </div>
@@ -42,5 +44,7 @@
 @endsection
 
 @section('scripts')
+
+<script src={{asset('/assets/js/pages/transfer.js')}}></script>
 
 @endsection

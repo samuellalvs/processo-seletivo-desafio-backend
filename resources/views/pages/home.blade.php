@@ -26,6 +26,7 @@
         <h2 class="title">Serviços disponiveis</h2>
         <div class="services-wrapper">
             <a href={{route('transfer')}}>
+                <i class="fas fa-exchange-alt"></i>
                 Fazer transferência
             </a>
         </div>
