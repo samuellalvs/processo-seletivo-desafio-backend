@@ -18,6 +18,8 @@ use App\Http\Controllers\UserController;
 
 Route::middleware('auth:sanctum')->group(function(){
     Route::post('/user/signOut', [UserController::class, 'signOut']);
+    Route::get('/user/data', [UserController::class, 'getUserData']);
+    
     Route::post('/transfer', [TransferController::class, 'doTransfer']);
 });
 

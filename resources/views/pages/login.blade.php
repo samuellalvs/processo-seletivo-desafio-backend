@@ -16,8 +16,7 @@
             <img src={{asset('/assets/images/picpay-logo.png')}} alt="Logo PicPay">
         </div>
         <div class="login-card-body">
-            <form class="login-form" action="">
-                @csrf
+            <form class="login-form" onSubmit="return handleFormSubmit(event)">
 
                 <div class="login-form-header">
                     <h1>Login</h1>
@@ -47,7 +46,10 @@
 
 </div>
 
+@endsection
 
+@section('scripts')
 
+<script src={{asset('/assets/js/pages/login.js')}}></script>
 
 @endsection

@@ -52,11 +52,8 @@ class UserController extends Controller
         if(auth()->attempt($credentials)){
             $user_token = auth()->user()->createToken('@picpay:token')->plainTextToken;
 
-            auth()->user()->bank_balance;
-
             return response()->json([
                 'data' => 'success',
-                'user' => auth()->user(),
                 'token' => $user_token
             ], 200);
         } else {
@@ -72,6 +69,26 @@ class UserController extends Controller
         return response()->json([
             'data' => 'success'
         ], 200);
+    }
+
+    public function getUserData(Request $request){
+        auth()->user()->bank_balance;
+
+        $services = [];
+        if(auth()->user()->type === 'comum'){
+            $services = [
+                [
+                    'name' => 'Fazer transferência',
+                    'icon' => 'fas fa-exchange-alt',
+                    'route' => route('transfer')
+                ]
+            ];
+        }
+
+        return response()->json([
+            'user' => auth()->user(),
+            'services' => $services
+        ]);
     }
 
 }

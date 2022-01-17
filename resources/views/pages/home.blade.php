@@ -12,29 +12,28 @@
 
 <div class="container">
     <div class="header">
-        <h1>Olá, <b>Samuel</b></h1>
+        <h1>Olá, <b id="name">Samuel</b></h1>
 
-        <button>Sair</button>
+        <button onCLick="signOut()">Sair</button>
     </div>
 
-    <div class="content">
+    <div id="content" class="content">
         <div class="bank-balance-wrapper">
             <p>Seu saldo é de</p>
-            <h2>R$10.000,00</h2>
+            <h2 id="bankBalance">R$10.000,00</h2>
         </div>
 
         <h2 class="title">Serviços disponiveis</h2>
-        <div class="services-wrapper">
-            <a href={{route('transfer')}}>
-                <i class="fas fa-exchange-alt"></i>
-                Fazer transferência
-            </a>
-        </div>
+
     </div>
 </div>
 
 @endsection
 
 @section('scripts')
+
+<script src={{asset('/assets/js/middleware/checkAuth.js')}}></script>
+<script src={{asset('/assets/js/pages/home.js')}}></script>
+
 
 @endsection

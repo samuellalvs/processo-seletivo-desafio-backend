@@ -17,17 +17,12 @@
     </div>
 
     <div class="content">
-        <form class="transfer-form" onSubmit="(e) => { e.preventDefault(); }">
+        <form class="transfer-form" onSubmit="return handleFormSubmit(event)">
             @csrf
 
             <div class="input-wrapper">
                 <label for="registryNumber">CPF/CNPJ</label>
                 <input type="registryNumber" id="registryNumber">
-            </div>
-
-            <div class="input-wrapper">
-                <label for="name">Nome</label>
-                <input type="name" id="name">
             </div>
 
             <div class="input-wrapper">
@@ -45,6 +40,7 @@
 
 @section('scripts')
 
+<script src={{asset('/assets/js/middleware/checkAuth.js')}}></script>
 <script src={{asset('/assets/js/pages/transfer.js')}}></script>
 
 @endsection
