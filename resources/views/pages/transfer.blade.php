@@ -30,7 +30,9 @@
                 <input type="amount" id="amount">
             </div>
 
-            <button type="submit">Confirmar transferência</button>
+            <button id="submitButton" type="submit">
+                Confirmar transferência
+            </button>
         </form>
 
     </div>

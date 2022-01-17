@@ -19,28 +19,23 @@ class UserController extends Controller
             'password' => 'string|required'
         ]);
 
-        if($validated){
-            $user = new User;
-            $user->name = $request->name;
-            $user->email = $request->email;
-            $user->registryNumber = $request->registryNumber;
-            $user->type = $request->type;
-            $user->password = Hash::make($request->password);
-            
-            if($user->save()){
-                return response()->json([
-                    'data' => 'success'
-                ], 200);
-            }else{
-                return response()->json([
-                    'data' => 'error'
-                ], 400);
-            }
+        $user = new User;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->registryNumber = $request->registryNumber;
+        $user->type = $request->type;
+        $user->password = Hash::make($request->password);
+        
+        if($user->save()){
+            return response()->json([
+                'data' => 'success'
+            ], 200);
         }else{
             return response()->json([
                 'data' => 'error'
             ], 400);
         }
+
     }
 
     public function signIn(Request $request){

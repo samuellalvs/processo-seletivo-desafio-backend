@@ -16,6 +16,7 @@
     <link rel="shortcut icon" type="image/jpg" href={{asset('favicon.ico')}} />
 
     <link rel="stylesheet" href={{asset('/assets/css/global.css')}}>
+    <link rel="stylesheet" href={{asset('/assets/css/loader.css')}}>
 
     <title>@yield('title') - Desafio PicPay</title>
 

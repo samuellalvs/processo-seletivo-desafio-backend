@@ -9,8 +9,11 @@ use App\Models\User;
 class TransferController extends Controller
 {
     public function doTransfer(Request $request){
-        
-        
+        $validated = $request->validate([
+            'payeeRegistryNumber' => 'numeric|required',
+            'amount' => 'numeric|required',
+        ]);
+
         if($request->user()->type === 'lojista'){
             return response()->json([
                 'data' => 'error',
@@ -38,9 +41,26 @@ class TransferController extends Controller
 
         if($payee_user){
 
-            $external_authorization = json_decode(file_get_contents('https://run.mocky.io/v3/8fafdd68-a090-496f-8c9a-3442cf30dae6'));
+            try {
+                $notification = json_decode(file_get_contents('http://o4d9z.mocklab.io/notify'));
+            } catch (\Throwable $th) {
+                return response()->json([
+                    'data' => 'error',
+                    'message' => 'Ocorreu um erro ao verificar o serviço de notificações'
+                ]);
+            }
 
-            if($external_authorization->message === 'Autorizado'){
+            try {
+                $external_authorization = json_decode(file_get_contents('https://run.mocky.io/v3/8fafdd68-a090-496f-8c9a-3442cf30dae6'));
+
+            } catch (\Throwable $th) {
+                return response()->json([
+                    'data' => 'error',
+                    'message' => 'Ocorreu um erro de autorização'
+                ]);
+            }
+
+            if($external_authorization->message === 'Autorizado' && $notification->message === 'Success'){
 
                 $user_payer_bank_balance = $request->user()->bank_balance;
                 $user_payee_bank_balance = $payee_user->bank_balance;
@@ -67,6 +87,7 @@ class TransferController extends Controller
                     'message' => 'A transação não foi autorizada'
                 ]);
             }
+
         }else{
             return response()->json([
                 'data' => 'error',
