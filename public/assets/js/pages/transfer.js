@@ -1,5 +1,5 @@
 function handleBack() {
-    history.back();
+    window.location.replace("/home");
 }
 
 function handleFormSubmit(e) {
@@ -15,11 +15,22 @@ function handleFormSubmit(e) {
         },
         {
             headers: {
-                'Authorization': localStorage.getItem('@picpay:token')
+                'Authorization': `Bearer ${localStorage.getItem('@picpay:token')}`
             }
         }
     ).then(response => {
         console.log(response);
+        if (response.data.data === 'success') {
+            window.alert(response.data.message);
+
+            document.getElementById('registryNumber').value = '';
+            document.getElementById('amount').value = '';
+        } else {
+            window.alert(response.data.message);
+        }
+
+
     }).catch(() => {
+        window.alert('Ocorreu um erro ao fazer a transferencia.');
     });
 }

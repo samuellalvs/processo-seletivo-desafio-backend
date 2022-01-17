@@ -12,7 +12,7 @@
 
 <div class="container">
     <div class="header">
-        <h1>Olá, <b id="name">Samuel</b></h1>
+        <h1>Olá, <b id="name"></b></h1>
 
         <button onCLick="signOut()">Sair</button>
     </div>
@@ -20,7 +20,7 @@
     <div id="content" class="content">
         <div class="bank-balance-wrapper">
             <p>Seu saldo é de</p>
-            <h2 id="bankBalance">R$10.000,00</h2>
+            <h2 id="bankBalance"></h2>
         </div>
 
         <h2 class="title">Serviços disponiveis</h2>
