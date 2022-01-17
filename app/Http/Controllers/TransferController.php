@@ -25,35 +25,35 @@ class TransferController extends Controller
             ]);
         }
 
-        if($request->user()->registryNumber === $request->beneficiaryRegistryNumber){
+        if($request->user()->registryNumber === $request->payeeRegistryNumber){
             return response()->json([
                 'data' => 'error',
                 'message' => 'Você não pode fazer uma transação para si proprio'
             ]);
         }
 
-        $beneficiary_user = User::where([
-            ['registryNumber', $request->beneficiaryRegistryNumber]
+        $payee_user = User::where([
+            ['registryNumber', $request->payeeRegistryNumber]
         ])->first();
 
-        if($beneficiary_user){
+        if($payee_user){
 
             $external_authorization = json_decode(file_get_contents('https://run.mocky.io/v3/8fafdd68-a090-496f-8c9a-3442cf30dae6'));
 
             if($external_authorization->message === 'Autorizado'){
 
-                $user_sender_bank_balance = $request->user()->bank_balance;
-                $user_beneficiary_bank_balance = $beneficiary_user->bank_balance;
+                $user_payer_bank_balance = $request->user()->bank_balance;
+                $user_payee_bank_balance = $payee_user->bank_balance;
 
-                $user_sender_bank_balance->amount -= $request->amount;
-                $user_sender_bank_balance->save();
+                $user_payer_bank_balance->amount -= $request->amount;
+                $user_payer_bank_balance->save();
 
-                $user_beneficiary_bank_balance->amount += $request->amount;
-                $user_beneficiary_bank_balance->save();
+                $user_payee_bank_balance->amount += $request->amount;
+                $user_payee_bank_balance->save();
 
                 $new_transfer = new Transfer;
-                $new_transfer->user_sender_id = $request->user()->id;
-                $new_transfer->user_beneficiary_id = $beneficiary_user->id;
+                $new_transfer->user_payer_id = $request->user()->id;
+                $new_transfer->user_payee_id = $payee_user->id;
                 $new_transfer->amount = $request->amount;
                 $new_transfer->save();
 

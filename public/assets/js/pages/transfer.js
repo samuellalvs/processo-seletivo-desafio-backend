@@ -5,12 +5,12 @@ function handleBack() {
 function handleFormSubmit(e) {
     e.preventDefault();
 
-    let beneficiaryRegistryNumber = document.getElementById('registryNumber').value;
+    let payeeRegistryNumber = document.getElementById('registryNumber').value;
     let amount = document.getElementById('amount').value;
 
     api.post('/api/transfer',
         {
-            beneficiaryRegistryNumber,
+            payeeRegistryNumber,
             amount
         },
         {

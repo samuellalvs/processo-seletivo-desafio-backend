@@ -13,8 +13,8 @@ class Transfer extends Model
 
     protected $fillable = [
         'id',
-        'user_sender_id',
-        'user_beneficiary_id',
+        'user_payer_id',
+        'user_payee_id',
         'amount'
     ];
 }

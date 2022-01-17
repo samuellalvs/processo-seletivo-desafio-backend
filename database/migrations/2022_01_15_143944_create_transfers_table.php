@@ -15,10 +15,10 @@ class CreateTransfersTable extends Migration
     {
         Schema::create('transfers', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_sender_id');
-            $table->foreign('user_sender_id')->references('id')->on('user');
-            $table->unsignedBigInteger('user_beneficiary_id');
-            $table->foreign('user_beneficiary_id')->references('id')->on('user');
+            $table->unsignedBigInteger('user_payer_id');
+            $table->foreign('user_payer_id')->references('id')->on('user');
+            $table->unsignedBigInteger('user_payee_id');
+            $table->foreign('user_payee_id')->references('id')->on('user');
             $table->float('amount');
             $table->timestamps();
         });
