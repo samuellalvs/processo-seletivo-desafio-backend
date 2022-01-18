@@ -1,6 +1,6 @@
-# **PICPAY - DESAFIO**
+# **PROCESSO SELETIVO - DESAFIO**
 
-Projeto desenvolvido para o processo seletivo do PICPAY
+Projeto desenvolvido para o processo seletivo do PROCESSO SELETIVO
 
 ## 💻 Pré-requisitos
 
