@@ -13,7 +13,7 @@ class TransferController extends Controller
             'payeeRegistryNumber' => 'numeric|required',
             'amount' => 'numeric|required',
         ]);
-
+        
         if($request->user()->type === 'lojista'){
             return response()->json([
                 'data' => 'error',
