@@ -185,7 +185,7 @@ Se o beneficiario da transação não for encontrado
 Serviço que retorna os dados do usuário, seus dados bancarios e a listagem de serviços disponiveis para ele.
 
 ```
-http://127.0.0.1:8000/api/user/data
+/api/user/data
 ```
 **Request HEADER**
 ```
