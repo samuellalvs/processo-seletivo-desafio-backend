@@ -1,6 +1,6 @@
 # **PROCESSO SELETIVO - DESAFIO**
 
-Projeto desenvolvido para o processo seletivo do PROCESSO SELETIVO
+Projeto desenvolvido para um processo seletivo
 
 ## 💻 Pré-requisitos
 
